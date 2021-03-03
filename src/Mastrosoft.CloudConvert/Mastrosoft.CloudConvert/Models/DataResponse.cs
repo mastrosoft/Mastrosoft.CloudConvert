@@ -28,7 +28,7 @@ namespace Mastrosoft.CloudConvert.Models
         public DateTime CreatedAt { get; set; }
         public DateTime? StartedAt { get; set; }
         public DateTime? EndedAt { get; set; }
-        public List<TaskBase> Tasks { get; set; }
+        public List<object> Tasks { get; set; }
     }
 }
 

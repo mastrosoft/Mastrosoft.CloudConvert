@@ -23,7 +23,7 @@ namespace Mastrosoft.CloudConvert.Models
     {
         public DataResponse<T> Data { get; set; }
     }
-    public class JobResponse<T>
+    public class JobResponse
     {
         public JobDataResponse Data { get; set; }
     }

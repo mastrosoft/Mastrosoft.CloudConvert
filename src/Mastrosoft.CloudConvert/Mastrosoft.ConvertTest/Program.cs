@@ -33,11 +33,11 @@ namespace Mastrosoft.ConvertTest
 
                 var createjob = new CloudConvert.Models.CreateJob
                 {
-                    Tag = "test",
+                    Tag = "test_" + Guid.NewGuid(),
                     Tasks = new System.Collections.Generic.Dictionary<string, object>()
                 };
-                createjob.Tasks.Add("import_file", new ImportUrlTask { Url = new Uri("http://www.africau.edu/images/default/sample.pdf") });
-                createjob.Tasks.Add("convert_file", new ConvertTask
+                createjob.Tasks.Add(createjob.Tag + "_import_file", new ImportUrlTask { Url = new Uri("http://www.africau.edu/images/default/sample.pdf") });
+                createjob.Tasks.Add(createjob.Tag + "_convert_file", new ConvertTask
                 {
                     Input = importResult.Id,
                     InputFormat = "pdf",
@@ -45,23 +45,23 @@ namespace Mastrosoft.ConvertTest
                     OutputFormat = "pdf",
                     Pages = "1-2"
                 });
-                createjob.Tasks.Add("export_urlconvert", new ExportUrlTask { Input = "convert_file" });
+                createjob.Tasks.Add(createjob.Tag + "_export_urlconvert", new ExportUrlTask { Input = createjob.Tag + "_convert_file" });
 
                 var result = await client.CreateJob(createjob);
 
                 var mergejob = new CloudConvert.Models.CreateJob
                 {
-                    Tag = "test",
+                    Tag = "test_" + Guid.NewGuid(),
                     
                 };
-                mergejob.Tasks.Add("import_file", new ImportUrlTask { Url = new Uri("http://www.africau.edu/images/default/sample.pdf") });
-                mergejob.Tasks.Add("import_file2", new ImportUrlTask { Url = new Uri("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf") });
-                mergejob.Tasks.Add("mergefiles", new MergeTask
+                mergejob.Tasks.Add(mergejob.Tag+"_import_file", new ImportUrlTask { Url = new Uri("http://www.africau.edu/images/default/sample.pdf") });
+                mergejob.Tasks.Add(mergejob.Tag + "_import_file2", new ImportUrlTask { Url = new Uri("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf") });
+                mergejob.Tasks.Add(mergejob.Tag + "_mergefiles", new MergeTask
                 {
-                    Input = new[] { "import_file", "import_file2" },
+                    Input = new[] { mergejob.Tag+"_import_file", mergejob.Tag+"_import_file2" },
                     OutputFormat="pdf"
                 });
-                mergejob.Tasks.Add("export_urlmerge", new ExportUrlTask { Input = "mergefiles"});
+                mergejob.Tasks.Add(mergejob.Tag + "_export_urlmerge", new ExportUrlTask { Input = mergejob.Tag + "_mergefiles" });
                 var resultMerge = await client.CreateJob(mergejob);
             }).Wait();
             

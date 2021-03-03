@@ -14,14 +14,14 @@ using Utf8Json.Resolvers;
 
 namespace Mastrosoft.CloudConvert
 {
-    public interface IConvertCloudClient
+    public interface ICloudConvertClient
     {
         Task<JobDataResponse> CreateJob(CreateJob jobTask);
         Task<DataResponse<T>> CreateTask<T>(T input) where T : TaskBase;
         bool ValidateWebhook(string json, string signature, string signingSecret);
         bool ValidateWebhook(string json, string signature);
     }
-    public class CloudConvertClient : IConvertCloudClient
+    public class CloudConvertClient : ICloudConvertClient
     {
         public const string API_BASE = "https://api.cloudconvert.com/v2/";
         public const string API_SANDBOX_BASE = "https://api.sandbox.cloudconvert.com/v2/";
@@ -75,16 +75,15 @@ namespace Mastrosoft.CloudConvert
                 requestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 var result = await _httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead);
-
+                var getStreamTask = result.Content.ReadAsStreamAsync();
                 if (result.IsSuccessStatusCode)
                 {
-                    var responseStream = await result.Content.ReadAsStreamAsync();
+                    var responseStream = await getStreamTask;
                     return (await JsonSerializer.DeserializeAsync<Response<T>>(responseStream, _resolver))?.Data;
                 }
                 else
                 {
-                    var output = await result.Content.ReadAsStringAsync();
-                    var responseStream = await result.Content.ReadAsStreamAsync();
+                    var responseStream = await getStreamTask;
                     var error = (await JsonSerializer.DeserializeAsync<ErrorResponse>(responseStream, _resolver));
                     throw new CloudConvertException(error);
                 }
@@ -103,15 +102,15 @@ namespace Mastrosoft.CloudConvert
                 };
                 requestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var result = await _httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead);
+                var getStreamTask = result.Content.ReadAsStreamAsync();
                 if (result.IsSuccessStatusCode)
                 {
-                    var responseStream = await result.Content.ReadAsStreamAsync();
-                    return (await JsonSerializer.DeserializeAsync<JobDataResponse>(responseStream, _resolver));
+                    var responseStream = await getStreamTask;
+                    return (await JsonSerializer.DeserializeAsync<JobResponse>(responseStream, _resolver)).Data;
                 }
                 else
                 {
-                    //var output = await result.Content.ReadAsStringAsync();
-                    var responseStream = await result.Content.ReadAsStreamAsync();
+                    var responseStream = await getStreamTask;
                     var error = (await JsonSerializer.DeserializeAsync<ErrorResponse>(responseStream, _resolver));
                     throw new CloudConvertException(error);
                 }
