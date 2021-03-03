@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mastrosoft.CloudConvert", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastrosoft.ConvertTest", "Mastrosoft.ConvertTest\Mastrosoft.ConvertTest.csproj", "{145D4AB8-5C3C-4E0A-9A7B-CBF6894ED1AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastrosoft.CloudConvert.Test", "Mastrosoft.CloudConvert.Test\Mastrosoft.CloudConvert.Test.csproj", "{D7AA3DC3-A752-4D79-9398-03C380407FA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{145D4AB8-5C3C-4E0A-9A7B-CBF6894ED1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145D4AB8-5C3C-4E0A-9A7B-CBF6894ED1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145D4AB8-5C3C-4E0A-9A7B-CBF6894ED1AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7AA3DC3-A752-4D79-9398-03C380407FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7AA3DC3-A752-4D79-9398-03C380407FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7AA3DC3-A752-4D79-9398-03C380407FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7AA3DC3-A752-4D79-9398-03C380407FA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
