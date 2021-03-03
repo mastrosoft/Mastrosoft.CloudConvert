@@ -4,7 +4,7 @@
     <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net471</TargetFrameworks>
     <Company>Mastronardi Software</Company>
     <Description>convertcloud.com API Wrapper in .NET with Utf8Json dependency (faster) instead of the slower Newtonsoft.</Description>
-    <Version>1.0.1-preview.1</Version>
+    <Version>1.0.1-preview.2</Version>
     <Copyright>2021 Mastronardi Software</Copyright>
   </PropertyGroup>
 
