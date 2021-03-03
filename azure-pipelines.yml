@@ -43,3 +43,15 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Mastrosoft.CloudConvert.csproj'
+    includesymbols: true
+    versioningScheme: 'off'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    ArtifactName: 'nuget'
+    publishLocation: 'Container'
