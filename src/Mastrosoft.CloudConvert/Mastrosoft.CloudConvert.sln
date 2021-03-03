@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastrosoft.ConvertTest", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastrosoft.CloudConvert.Test", "Mastrosoft.CloudConvert.Test\Mastrosoft.CloudConvert.Test.csproj", "{D7AA3DC3-A752-4D79-9398-03C380407FA6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{73C07535-2EAE-45E6-8FDA-686EEC9E6625}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
