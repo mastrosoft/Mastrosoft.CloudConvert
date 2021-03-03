@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Mastrosoft.CloudConvert
 {
     [Serializable]
-    internal class CloudConvertException : Exception
+    public class CloudConvertException : Exception
     {
         public CloudConvertException()
         {
