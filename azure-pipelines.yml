@@ -52,6 +52,6 @@ steps:
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     ArtifactName: 'nuget'
     publishLocation: 'Container'
