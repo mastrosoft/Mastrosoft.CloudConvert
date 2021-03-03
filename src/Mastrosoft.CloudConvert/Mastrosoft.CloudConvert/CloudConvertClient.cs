@@ -5,6 +5,8 @@ using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Utf8Json;
 using Utf8Json.Formatters;
@@ -16,6 +18,8 @@ namespace Mastrosoft.CloudConvert
     {
         Task<JobDataResponse> CreateJob(CreateJob jobTask);
         Task<DataResponse<T>> CreateTask<T>(T input) where T : TaskBase;
+        bool ValidateWebhook(string json, string signature, string signingSecret);
+        bool ValidateWebhook(string json, string signature);
     }
     public class CloudConvertClient : IConvertCloudClient
     {
@@ -112,6 +116,22 @@ namespace Mastrosoft.CloudConvert
                     throw new CloudConvertException(error);
                 }
             }
+        }
+        public bool ValidateWebhook(string json, string signature)
+        {
+            return ValidateWebhook(json, signature, _settings.SigningSecret);
+        }
+        public bool ValidateWebhook(string json, string signature, string signingSecret)
+        {
+            string hashHMAC = HashHMAC(signingSecret, json);
+
+            return hashHMAC == signature;
+        }
+
+        private string HashHMAC(string key, string message)
+        {
+            byte[] hash = new HMACSHA256(Encoding.UTF8.GetBytes(key)).ComputeHash(new ASCIIEncoding().GetBytes(message));
+            return BitConverter.ToString(hash).Replace("-", "").ToLower();
         }
     }
 }
