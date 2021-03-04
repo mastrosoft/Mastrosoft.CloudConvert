@@ -6,6 +6,9 @@
     <Description>convertcloud.com API Wrapper in .NET with Utf8Json dependency (faster) instead of the slower Newtonsoft.</Description>
     <Version>1.0.1</Version>
     <Copyright>2021 Mastronardi Software</Copyright>
+    <PackageProjectUrl>https://github.com/mastrosoft/Mastrosoft.CloudConvert</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mastrosoft/Mastrosoft.CloudConvert</RepositoryUrl>
+    <Authors>Sandro Mastronardi</Authors>
   </PropertyGroup>
 
   <ItemGroup>
