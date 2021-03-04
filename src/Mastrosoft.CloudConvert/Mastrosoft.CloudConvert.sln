@@ -5,11 +5,18 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mastrosoft.CloudConvert", "Mastrosoft.CloudConvert\Mastrosoft.CloudConvert.csproj", "{1C4234A0-0F46-4E78-9021-572A13EC664A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastrosoft.ConvertTest", "Mastrosoft.ConvertTest\Mastrosoft.ConvertTest.csproj", "{145D4AB8-5C3C-4E0A-9A7B-CBF6894ED1AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mastrosoft.ConvertTest", "Mastrosoft.ConvertTest\Mastrosoft.ConvertTest.csproj", "{145D4AB8-5C3C-4E0A-9A7B-CBF6894ED1AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastrosoft.CloudConvert.Test", "Mastrosoft.CloudConvert.Test\Mastrosoft.CloudConvert.Test.csproj", "{D7AA3DC3-A752-4D79-9398-03C380407FA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mastrosoft.CloudConvert.Test", "Mastrosoft.CloudConvert.Test\Mastrosoft.CloudConvert.Test.csproj", "{D7AA3DC3-A752-4D79-9398-03C380407FA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{73C07535-2EAE-45E6-8FDA-686EEC9E6625}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.gitignore = ..\..\.gitignore
+		..\..\azure-pipelines-dev.yml = ..\..\azure-pipelines-dev.yml
+		..\..\azure-pipelines.yml = ..\..\azure-pipelines.yml
+		..\..\LICENSE = ..\..\LICENSE
+		..\..\README.md = ..\..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
