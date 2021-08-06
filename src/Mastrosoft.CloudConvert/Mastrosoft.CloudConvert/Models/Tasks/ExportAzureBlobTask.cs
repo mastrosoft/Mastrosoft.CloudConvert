@@ -10,6 +10,7 @@
         public string Container { get; set; }
         public string Blob { get; set; }
         public string BlobPrefix { get; set; }
+        public object Metadata { get; set; }
     }
 }
 
