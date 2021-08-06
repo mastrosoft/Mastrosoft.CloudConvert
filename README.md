@@ -7,11 +7,11 @@
 ## Installation
 
 ```
-PM> Install-Package CloudConvert.API -Version 1.0.1
+PM> Install-Package Mastrosoft.CloudConvert -Version 1.0.1
 ```
 or
 ```
-dotnet add package CloudConvert.API --version 1.0.1
+dotnet add package Mastrosoft.CloudConvert --version 1.0.1
 ```
 
 This package uses the more performant UTF8Json Json library, and allows you to use IOptions to setup configuration.
